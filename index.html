@@ -550,6 +550,18 @@
     font-weight: 300;
   }
   .project-tech { position: relative; z-index: 1; }
+  .private-note {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: var(--muted-2);
+    font-size: .82rem;
+    font-weight: 700;
+  }
+  .private-note svg { width: 14px; height: 14px; flex: 0 0 auto; color: var(--accent-2); }
   .system-visual {
     position: relative;
     z-index: 1;
@@ -876,6 +888,35 @@
           <div class="project-tech">
             <span class="tech-pill accent">Flutter</span><span class="tech-pill accent">Kotlin</span><span class="tech-pill">Foreground Service</span><span class="tech-pill">UsageStatsManager</span><span class="tech-pill">MethodChannel</span><span class="tech-pill">BLoC</span><span class="tech-pill">Clean Architecture</span>
           </div>
+        </article>
+
+        <article class="project-card featured reveal">
+          <div class="project-top">
+            <div>
+              <span class="project-kicker">Private Product · Customer + Admin Flutter Apps</span>
+              <h3 class="project-name">QR Tap - Restaurant QR Ordering Platform</h3>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-system">Private Product</span>
+              <span class="badge badge-arch">Customer + Admin</span>
+            </div>
+          </div>
+          <p class="project-desc">
+            A private restaurant platform built as two Flutter apps: a customer app and an admin dashboard. The customer app supports QR table sessions, menu browsing, cart and order flows, reservations with QR check-in, support requests, feedback, notifications, and offline restaurant/menu continuity. The admin app manages orders, reservations, support tickets, feedback, FAQs, notifications, and settings. Built with Clean Architecture, BLoC, reusable UI states, secure local settings, and production-style manual QA.
+          </p>
+          <div class="system-visual" aria-label="QR Tap experience flow">
+            <div class="system-step"><span>Scan</span><strong>QR table session</strong></div>
+            <div class="system-step"><span>Order</span><strong>Menu, cart & reserve</strong></div>
+            <div class="system-step"><span>Support</span><strong>Help & feedback</strong></div>
+            <div class="system-step"><span>Manage</span><strong>Admin dashboard</strong></div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-pill accent">Flutter</span><span class="tech-pill accent">Dart</span><span class="tech-pill accent">BLoC</span><span class="tech-pill">Clean Architecture</span><span class="tech-pill">REST API</span><span class="tech-pill">QR Scanner</span><span class="tech-pill">Offline UX</span><span class="tech-pill">Admin Dashboard</span>
+          </div>
+          <p class="private-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Source code is private. Screenshots and walkthrough available on request.
+          </p>
         </article>
 
         <article class="project-card featured reveal">
