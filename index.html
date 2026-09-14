@@ -980,6 +980,22 @@
     flex: 1;
     min-height: 0;
   }
+  .window-shell {
+    width: 100%;
+    border: 1px solid rgba(125, 161, 202, .2);
+    border-radius: 14px;
+    background: #0c121d;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    max-height: 82vh;
+  }
+  .window-shell img {
+    display: block;
+    width: 100%;
+    max-height: 82vh;
+    object-fit: contain;
+  }
   .browser-shell img { display: block; width: 100%; }
   .lightbox-nav {
     display: flex;
@@ -1052,7 +1068,7 @@
         </div>
         <div class="hero-proof reveal" aria-label="Portfolio highlights">
           <div class="proof-card"><strong>2+</strong><span>Years Flutter</span></div>
-          <div class="proof-card"><strong>6</strong><span>Projects built</span></div>
+          <div class="proof-card"><strong>7</strong><span>Projects built</span></div>
           <div class="proof-card"><strong>1</strong><span>Client delivered</span></div>
         </div>
       </div>
@@ -1162,6 +1178,41 @@
               View Repository
             </a>
             <button type="button" class="gallery-btn" data-gallery="rotate">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              View Screens
+            </button>
+          </div>
+        </article>
+
+        <article class="project-card featured reveal">
+          <div class="project-top">
+            <div>
+              <span class="project-kicker">Personal Project · Windows Desktop App</span>
+              <h3 class="project-name">MARJIY - Legal Library Curation Tool</h3>
+            </div>
+            <div class="project-badges">
+              <span class="badge badge-system">Windows Desktop</span>
+              <span class="badge badge-arch">1,682+ Tests</span>
+            </div>
+          </div>
+          <p class="project-desc">
+            A Flutter Desktop app built for my father to organize a legal document library: safely importing PDFs (source files always stay read-only), detecting duplicates via SHA-256, adding legal metadata, full-text search through SQLite FTS5, and preparing reviewed export batches for a future public legal-library website. Delivered as a Windows installer and in daily use for about a month with zero reported bugs.
+          </p>
+          <div class="system-visual" aria-label="MARJIY workflow">
+            <div class="system-step"><span>Import</span><strong>Safe, read-only intake</strong></div>
+            <div class="system-step"><span>Classify</span><strong>Legal metadata &amp; dedup</strong></div>
+            <div class="system-step"><span>Search</span><strong>Full-text (SQLite FTS5)</strong></div>
+            <div class="system-step"><span>Export</span><strong>Reviewed batches</strong></div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-pill accent">Flutter Desktop</span><span class="tech-pill accent">BLoC</span><span class="tech-pill">Clean Architecture</span><span class="tech-pill">Drift / SQLite</span><span class="tech-pill">FTS5</span><span class="tech-pill">Win32 FFI</span><span class="tech-pill">GetIt</span>
+          </div>
+          <div class="card-actions">
+            <a class="repo-link" href="https://github.com/Ahmad-alnahal/legal_library_manager" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View Repository
+            </a>
+            <button type="button" class="gallery-btn" data-gallery="marjiy">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               View Screens
             </button>
@@ -1465,6 +1516,11 @@
         "assets/NROMA/04-about-contact.png",
       ],
     },
+    marjiy: {
+      title: "MARJIY",
+      frame: "window",
+      images: Array.from({ length: 11 }, (_, i) => `assets/MARJIY/${i + 1}.png`),
+    },
   };
 
   const lightbox = document.getElementById("lightbox");
@@ -1485,7 +1541,7 @@
     const src = gallery.images[activeIndex];
     lightboxTitle.textContent = `${gallery.title} — ${activeIndex + 1} / ${gallery.images.length}`;
     lightboxCounter.textContent = `${activeIndex + 1} / ${gallery.images.length}`;
-    lightboxInner.classList.toggle("browser-mode", gallery.frame === "browser");
+    lightboxInner.classList.toggle("browser-mode", gallery.frame === "browser" || gallery.frame === "window");
     lightboxPrev.disabled = activeIndex === 0;
     lightboxNext.disabled = activeIndex === gallery.images.length - 1;
 
@@ -1493,6 +1549,11 @@
       lightboxFrame.innerHTML = `
         <div class="phone-shell">
           <div class="phone-notch"><span></span></div>
+          <img src="${src}" alt="${gallery.title} screenshot ${activeIndex + 1}">
+        </div>`;
+    } else if (gallery.frame === "window") {
+      lightboxFrame.innerHTML = `
+        <div class="window-shell">
           <img src="${src}" alt="${gallery.title} screenshot ${activeIndex + 1}">
         </div>`;
     } else {
