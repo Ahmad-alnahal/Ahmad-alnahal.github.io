@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Ahmad Alnahal is a Flutter Mobile App Developer and final-year IT student building mobile apps with Clean Architecture, BLoC, Firebase, Figma, and native Android integrations."/>
 <title>Ahmad Alnahal | Flutter Mobile App Developer</title>
+
+<link rel="icon" type="image/png" href="assets/favicon.png"/>
+<link rel="apple-touch-icon" href="assets/favicon.png"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Ahmad Alnahal | Flutter Mobile App Developer"/>
+<meta property="og:description" content="Final-year IT student and Flutter developer building mobile apps with Clean Architecture, BLoC, Firebase, and native Android integrations. Open to remote roles."/>
+<meta property="og:image" content="https://ahmad-alnahal.github.io/assets/me.jpg"/>
+<meta property="og:url" content="https://ahmad-alnahal.github.io/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Ahmad Alnahal | Flutter Mobile App Developer"/>
+<meta name="twitter:description" content="Final-year IT student and Flutter developer building mobile apps with Clean Architecture, BLoC, Firebase, and native Android integrations."/>
+<meta name="twitter:image" content="https://ahmad-alnahal.github.io/assets/me.jpg"/>
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
@@ -179,6 +193,22 @@
     grid-template-columns: 1fr;
     gap: 32px;
     align-items: start;
+  }
+  .hero-title-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .hero-photo {
+    flex: 0 0 auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 36px;
+    object-fit: cover;
+    image-rendering: auto;
+    border: 3px solid rgba(45, 212, 191, .45);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .4), 0 0 0 8px rgba(45, 212, 191, .08);
   }
   .hero-copy {
     position: relative;
@@ -732,6 +762,8 @@
     section { padding: 68px 0; }
     #hero { min-height: auto; padding: 104px 0 56px; }
     h1 { font-size: clamp(2.55rem, 13vw, 3.75rem); line-height: 1.14; }
+    .hero-title-row { gap: 16px; }
+    .hero-photo { width: 128px; height: 128px; border-radius: 26px; }
     .hero-sub { font-size: 1rem; line-height: 1.85; }
     .hero-panel { padding: 14px; margin-top: 4px; }
     .device-card { padding: 16px; }
@@ -997,8 +1029,10 @@
     <div class="ambient" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="wrap hero-layout">
       <div class="hero-copy">
-        
-        <h1 id="hero-title" class="reveal">Flutter Mobile <span class="gradient-text">App Developer</span></h1>
+        <div class="hero-title-row reveal">
+          <h1 id="hero-title">Flutter Mobile <span class="gradient-text">App Developer</span></h1>
+          <img class="hero-photo" src="assets/me.jpg" alt="Ahmad Alnahal" width="220" height="220">
+        </div>
         <p class="hero-sub reveal">
           Final-year IT student building mobile apps with Clean Architecture, BLoC, Firebase, and native Android integrations. I move from Figma to Flutter with a product-focused eye for clean, reliable interfaces.
         </p>
