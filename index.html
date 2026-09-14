@@ -765,6 +765,31 @@
     .reveal { opacity: 1; transform: none; }
   }
 
+  .email-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    z-index: 200;
+    transform: translate(-50%, 16px);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(45, 212, 191, .34);
+    background: rgba(15, 23, 36, .94);
+    backdrop-filter: blur(14px);
+    color: var(--text);
+    font-size: .88rem;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .email-toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .email-toast svg { width: 16px; height: 16px; color: var(--accent-2); flex: 0 0 auto; }
+
   .gallery-btn {
     position: relative;
     z-index: 1;
@@ -963,7 +988,7 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-cta" href="mailto:alnahal2003@gmail.com">Hire me</a>
+    <a class="nav-cta" href="mailto:alnahal2003@gmail.com">Contact Me</a>
   </div>
 </nav>
 
@@ -1338,6 +1363,11 @@
   </div>
 </footer>
 
+<div class="email-toast" id="emailToast" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+  <span id="emailToastText"></span>
+</div>
+
 <script>
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const revealItems = document.querySelectorAll(".reveal");
@@ -1366,7 +1396,7 @@
         link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
       });
     });
-  }, { threshold: .45 });
+  }, { threshold: 0, rootMargin: "-45% 0px -50% 0px" });
 
   sections.forEach((section) => navObserver.observe(section));
 
@@ -1482,6 +1512,26 @@
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowLeft") step(-1);
     if (e.key === "ArrowRight") step(1);
+  });
+
+  const emailToast = document.getElementById("emailToast");
+  const emailToastText = document.getElementById("emailToastText");
+  let toastTimer = null;
+
+  function showEmailToast(email) {
+    emailToastText.textContent = `Email copied — ${email}`;
+    emailToast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => emailToast.classList.remove("show"), 2600);
+  }
+
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const email = link.getAttribute("href").replace("mailto:", "").split("?")[0];
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(() => showEmailToast(email)).catch(() => {});
+      }
+    });
   });
 </script>
 </body>
